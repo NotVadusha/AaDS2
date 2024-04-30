@@ -141,15 +141,14 @@ void SecondTask()
 	} while (currentNode != head);
 	cout << "\nMax value: " << max->data << endl;
 
+	int maxData = max->data;
 	currentNode = head;
-	while (currentNode != NULL) {
-		if (currentNode == max)
-		{
-			DeleteNode<int>(currentNode, head, end);
-			break;
-		}
+	do
+	{
+		currentNode->data = currentNode->data + maxData;
 		currentNode = currentNode->next;
-	}
+	} while (currentNode != head);
+
 	currentNode = head;
 	Print_List<int>(head);
 }

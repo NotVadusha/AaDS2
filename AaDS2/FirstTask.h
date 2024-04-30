@@ -94,7 +94,7 @@ void printList(LLNode <T>* node)
 
 void  FirstTask()
 {
-	LLNode <char>* head = NULL, * currentNode;
+	LLNode <char>* head = NULL, * currentNode = NULL;
 	const int N = 10;
 	char input;
 
@@ -102,7 +102,17 @@ void  FirstTask()
 	for (int i = 0; i < N; i++)
 	{
 		cin >> input;
-		Push<char>(&head, input);
+		if (head == NULL) {
+			head = new LLNode<char>();
+			head->data = input;
+			head->next = NULL;
+			head->prev = NULL;
+			currentNode = head;
+		}
+		else {
+			insertAfter(currentNode, input);
+			currentNode = currentNode->next;
+		}
 	}
 	cout << "Created list is: ";
 	printList(head);
